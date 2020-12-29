@@ -1,20 +1,24 @@
 package projetUML;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class Main {
 
+    public static Scene scene;
+
     public static void main(String[] args) {
-        Personnage a = new Personnage("Hippie");
-        Personnage b = new Personnage("Presse");
 
-        Batiment A = new Bar();
-        Batiment B = new FastFood();
-        Batiment C = new Bibliotheque();
+        JFrame fenetre = new JFrame("Quand on arrive en ville");
+        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fenetre.setSize(700,360);
+        fenetre.setLocationRelativeTo(null);
+        fenetre.setResizable(false);
+        fenetre.setAlwaysOnTop(true);
 
-        a.affiche();
-        C.ressourcer(a);
-        A.ressourcer(a);
-        a.affiche();
+        scene = new Scene();
+
+        fenetre.setContentPane(scene);
+        fenetre.setVisible(true);
     }
 }
