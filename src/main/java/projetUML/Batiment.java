@@ -5,6 +5,7 @@ public abstract class Batiment {
 
     abstract String getNom();
 
-    public void ressourcer(Personnage personnage) {}
+    public  void ressourcer(Personnage personnage) {
 
+    }
 }

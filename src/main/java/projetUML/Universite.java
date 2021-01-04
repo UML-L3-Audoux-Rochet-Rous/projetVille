@@ -1,6 +1,6 @@
 package projetUML;
 
-public class Universite {
+public class Universite extends Batiment {
 
     public Universite() {
     }

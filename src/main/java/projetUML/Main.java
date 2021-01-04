@@ -2,23 +2,21 @@ package projetUML;
 
 import javax.swing.*;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
-    public static Scene scene;
-
     public static void main(String[] args) {
-
-        JFrame fenetre = new JFrame("Quand on arrive en ville");
-        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fenetre.setSize(700,360);
-        fenetre.setLocationRelativeTo(null);
-        fenetre.setResizable(false);
-        fenetre.setAlwaysOnTop(true);
-
-        scene = new Scene();
-
-        fenetre.setContentPane(scene);
-        fenetre.setVisible(true);
+        Scanner utilisateur = new Scanner(System.in);
+        System.out.println("Entrez type de personnage");
+        String str = utilisateur.nextLine();
+        Personnage personnage = new Personnage(str);
+        personnage.affiche();
+        System.out.println("Taper Plateau pour commencer");
+        str = utilisateur.nextLine();
+        if (str.equals("Plateau")){
+            Plateau jeu = new Plateau(personnage);
+            jeu.deplacement(personnage);
+        }
     }
 }

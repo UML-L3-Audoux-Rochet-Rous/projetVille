@@ -14,6 +14,5 @@ public class FastFood extends Batiment {
         personnage.setHydratation(personnage.getHydratation()+10);
         personnage.setMoral(personnage.getMoral()+10);
         personnage.setVie(personnage.getVie()-5);
-
     }
 }

@@ -11,11 +11,11 @@ public class Bar extends Batiment{
         return "Bar";
     }
 
-    public void ressourcer(Personnage personnage){
+    public  void ressourcer(Personnage personnage){
         Random chance = new Random();
         int livreDiplome = chance.nextInt(100);
-        if (livreDiplome < 5){
-            personnage.setChanceDiplome((float) (personnage.getChanceDiplome()+0.05));
+        if (livreDiplome <= 5){
+            personnage.setChanceDiplome(personnage.getChanceDiplome()+0.05);
         }
         personnage.setHydratation(personnage.getHydratation()+25);
         personnage.setMoral(personnage.getMoral()+10);
