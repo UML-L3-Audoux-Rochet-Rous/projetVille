@@ -30,27 +30,27 @@ public class Plateau extends Case {
         };
         for (int i = 0; i < plateau.length; i++) {
             for (int j = 0; j < plateau.length; j++) {
-                switch (plateau[i][j].getTypeCase()){
-                    case "Bar":
+                switch (plateau[i][j].getTypeCase()) {
+                    case "Bar" -> {
                         barX = i;
                         barY = j;
-                        break;
-                    case "Universite":
+                    }
+                    case "Universite" -> {
                         univX = i;
                         univY = j;
-                        break;
-                    case "Bibliotheque":
+                    }
+                    case "Bibliotheque" -> {
                         biblioX = i;
                         biblioY = j;
-                        break;
-                    case "FastFood":
+                    }
+                    case "FastFood" -> {
                         fastX = i;
                         fastY = j;
-                        break;
-                    case "Maison":
+                    }
+                    case "Maison" -> {
                         maisonX = i;
                         maisonY = j;
-                        break;
+                    }
                 }
             }
         }
@@ -62,23 +62,15 @@ public class Plateau extends Case {
 
     public void deplacement(Personnage personnage){
         String pos = "Debut";
-        while(pos != "Arret"){
+        while(!pos.equals("Arret")){ // AJOUTER MOYEN TRANSPORT
             System.out.println("Utiliser Z Q S D pour vous deplacer dans la ville");
             Scanner user = new Scanner(System.in);
             pos = user.nextLine();
-            switch (pos){
-                case "Z":
-                    personnage.setPersoX(personnage.getPersoX()+1);
-                    break;
-                case "S":
-                    personnage.setPersoX(personnage.getPersoX()-1);
-                    break;
-                case "Q":
-                    personnage.setPersoY(personnage.getPersoY()-1);
-                    break;
-                case "D":
-                    personnage.setPersoY(personnage.getPersoY()+1);
-                    break;
+            switch (pos) {
+                case "Z" -> personnage.setPersoX(personnage.getPersoX() + 1);
+                case "S" -> personnage.setPersoX(personnage.getPersoX() - 1);
+                case "Q" -> personnage.setPersoY(personnage.getPersoY() - 1);
+                case "D" -> personnage.setPersoY(personnage.getPersoY() + 1);
             }
             if(personnage.getPersoX() == barX && personnage.getPersoY() == barY){
                 plateau[barX][barY].batiment.ressourcer(personnage);

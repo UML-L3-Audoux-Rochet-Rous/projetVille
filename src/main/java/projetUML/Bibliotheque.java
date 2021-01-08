@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class Bibliotheque extends Batiment {
 
-    int livre = 20;
-
     public Bibliotheque() {
     }
 

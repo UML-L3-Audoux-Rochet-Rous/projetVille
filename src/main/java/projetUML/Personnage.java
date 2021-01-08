@@ -1,5 +1,7 @@
 package projetUML;
 
+import static java.lang.System.exit;
+
 public class Personnage {
 
     private String type;
@@ -53,12 +55,12 @@ public class Personnage {
 
     public void setVie(double vie) {
         this.vie = vie;
-        if (vie > 100){
+        if (this.vie > 100){
             this.vie = 100;
         }
-        else if(vie == 0){
+        else if(this.vie == 0){
             System.out.println("Personnage mort fin de la simulation");
-            return;
+            gameOver();
         }
     }
 
@@ -68,8 +70,11 @@ public class Personnage {
 
     public void setHydratation(double hydratation) {
         this.hydratation = hydratation;
-        if (hydratation > 100){
+        if (this.hydratation > 100){
             this.hydratation = 100;
+        }
+        else if (this.hydratation == 0){
+            gameOver();
         }
     }
 
@@ -79,8 +84,11 @@ public class Personnage {
 
     public void setSatiete(double satiete) {
         this.satiete = satiete;
-        if (satiete > 100){
+        if (this.satiete > 100){
             this.satiete = 100;
+        }
+        else if(this.satiete == 0){
+            gameOver();
         }
     }
 
@@ -98,8 +106,11 @@ public class Personnage {
 
     public void setMoral(double moral) {
         this.moral = moral;
-        if (moral > 100){
+        if (this.moral > 100){
             this.moral = 100;
+        }
+        else if (this.moral == 0){
+            gameOver();
         }
     }
 
@@ -141,24 +152,20 @@ public class Personnage {
     }
 
     public void gameOver(){
-        if (this.vie == 0 || this.moral == 0 || this.hydratation == 0 || this.satiete == 0){
-            System.out.println("Game over, simulation terminé");
-            return;
-        }
-        else if (nbArrestation >= 3){
-            System.out.println("Game over, simulation terminé");
-            return;
+        if (this.vie == 0 || this.moral == 0 || this.hydratation == 0 || this.satiete == 0 || nbArrestation >= 3) {
+            System.out.println("Jeu terminé personnage mort");
+            exit(0);
         }
     }
 
     public void action(){
-        if(this.type == "Standard" || this.type == "Presse"){
+        if(this.type.equals("Standard") || this.type.equals("Presse")){
             this.setVie(this.getVie()-1);
             this.setMoral(this.getMoral()-1);
             this.setHydratation(this.getHydratation()-1);
             this.setSatiete(this.getSatiete()-1);
         }
-        else if(this.type == "Hippie"){
+        else if(this.type.equals("Hippie")){
             this.setVie(this.getVie()-0.5);
             this.setHydratation(this.getHydratation()-0.5);
             this.setSatiete(this.getSatiete()-0.5);
@@ -167,11 +174,11 @@ public class Personnage {
 
     public void actionDeplacer(){
 
-        if(this.getType() == "Standard"){
+        if(this.getType().equals("Standard")){
             this.action();
         }
 
-        else if(this.getType() =="Hippie"){
+        else if(this.getType().equals("Hippie")){
             this.setVie(this.getVie()-2);
             this.setHydratation(this.getHydratation()-2);
             this.setSatiete(this.getSatiete()-2);

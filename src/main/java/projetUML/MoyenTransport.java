@@ -18,7 +18,7 @@ public class MoyenTransport {
 
         personnage.actionDeplacer();
 
-        if (moyenTransport == "Voiture" && personnage.isPermis()){
+        if (moyenTransport.equals("Voiture") && personnage.isPermis()){
             Random chance = new Random();
             int chanceMourir = chance.nextInt(100);
             personnage.setMoral(personnage.getMoral()-2);
@@ -36,12 +36,12 @@ public class MoyenTransport {
             }
         }
 
-        else if( moyenTransport == "A pied"){
+        else if(moyenTransport.equals("A pied")){
             personnage.setSatiete(personnage.getSatiete()-10);
             personnage.setHydratation(personnage.getHydratation()-10);
         }
 
-        else if(moyenTransport == "Velo"){
+        else if(moyenTransport.equals("Velo")){
             personnage.setSatiete(personnage.getSatiete()-5);
             personnage.setHydratation(personnage.getHydratation()-5);
             Random chance = new Random();

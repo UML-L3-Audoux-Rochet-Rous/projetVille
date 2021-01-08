@@ -9,27 +9,14 @@ public class Case {
 
     public Case(String typeCase) {
         this.typeCase = typeCase;
-        if (typeCase.equals("Bar")){
-            batiment = new Bar();
-        }
-        else if (typeCase.equals("Bibliotheque")){
-            batiment = new Bibliotheque();
-        }
-        else if (typeCase.equals("FastFood")){
-            batiment = new FastFood();
-        }
-        else if (typeCase.equals("Maison")){
-            batiment = new Maison();
-        }
-        else if (typeCase.equals("Universite")){
-            batiment = new Universite();
-        }
-
-        else if(typeCase.equals("Route")){
-            route = new Route();
-        }
-        else if (typeCase.equals("Trottoir")){
-            trottoir = new Trottoir();
+        switch (typeCase) {
+            case "Bar" -> batiment = new Bar();
+            case "Bibliotheque" -> batiment = new Bibliotheque();
+            case "FastFood" -> batiment = new FastFood();
+            case "Maison" -> batiment = new Maison();
+            case "Universite" -> batiment = new Universite();
+            case "Route" -> route = new Route();
+            case "Trottoir" -> trottoir = new Trottoir();
         }
     }
 
