@@ -4,8 +4,6 @@ public class Case {
 
     public String typeCase;
     public Batiment batiment;
-    public Route route;
-    public Trottoir trottoir;
 
     public Case(String typeCase) {
         this.typeCase = typeCase;
@@ -15,8 +13,8 @@ public class Case {
             case "FastFood" -> batiment = new FastFood();
             case "Maison" -> batiment = new Maison();
             case "Universite" -> batiment = new Universite();
-            case "Route" -> route = new Route();
-            case "Trottoir" -> trottoir = new Trottoir();
+            case "Route" -> batiment = new Route();
+            case "Trottoir" -> batiment = new Trottoir();
         }
     }
 
@@ -26,4 +24,6 @@ public class Case {
     public String getTypeCase() {
         return typeCase;
     }
+
+
 }

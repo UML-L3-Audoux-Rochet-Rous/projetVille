@@ -1,5 +1,6 @@
 package projetUML;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.Random;
 
 public class MoyenTransport {
@@ -10,20 +11,24 @@ public class MoyenTransport {
         return moyenTransport;
     }
 
-    public void setMoyenTransport(String moyenTransport) {
-        this.moyenTransport = moyenTransport;
+    public MoyenTransport(String moyenTransport){
+        switch (moyenTransport) {
+            case "Voiture" -> this.moyenTransport = "Voiture";
+            case "A Pied" -> this.moyenTransport = "A Pied";
+            case "Velo" -> this.moyenTransport = "Velo";
+        }
     }
 
-    public void deplacer(Personnage personnage, String moyenTransport){
+    public void deplacer(Personnage personnage){
 
         personnage.actionDeplacer();
 
-        if (moyenTransport.equals("Voiture") && personnage.isPermis()){
+        if (this.moyenTransport.equals("Voiture") && personnage.isPermis()){
             Random chance = new Random();
             int chanceMourir = chance.nextInt(100);
-            personnage.setMoral(personnage.getMoral()-2);
-
+            personnage.setMoral(personnage.getMoral()-2.0);
             if(chanceMourir <= 2){
+                System.out.println("Tu t'es mangé un poid lourd fdp apprend a conduire");
                 personnage.setVie(0);
                 personnage.gameOver();
             }
@@ -36,12 +41,12 @@ public class MoyenTransport {
             }
         }
 
-        else if(moyenTransport.equals("A pied")){
+        else if(this.moyenTransport.equals("A pied")){
             personnage.setSatiete(personnage.getSatiete()-10);
             personnage.setHydratation(personnage.getHydratation()-10);
         }
 
-        else if(moyenTransport.equals("Velo")){
+        else if(this.moyenTransport.equals("Velo")){
             personnage.setSatiete(personnage.getSatiete()-5);
             personnage.setHydratation(personnage.getHydratation()-5);
             Random chance = new Random();

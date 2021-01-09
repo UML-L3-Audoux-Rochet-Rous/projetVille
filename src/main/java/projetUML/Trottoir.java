@@ -1,6 +1,6 @@
 package projetUML;
 
-public class Trottoir {
+public class Trottoir extends Batiment {
 
     public Trottoir(){}
 }

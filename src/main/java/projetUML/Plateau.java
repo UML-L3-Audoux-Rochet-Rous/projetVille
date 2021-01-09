@@ -1,6 +1,6 @@
 package projetUML;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Plateau extends Case {
 
@@ -21,13 +21,25 @@ public class Plateau extends Case {
     }
 
     public Plateau(Personnage personnage){
-        this.plateau = new Case[][]{
-                {new Case("Bar"), new Case("Trottoir"), new Case("Route"), new Case("Route"), new Case("Trottoir")},
-                {new Case("Universite"), new Case("Trottoir"), new Case("Route"), new Case("Route"), new Case("Trottoir")},
-                {new Case("Bibliotheque"), new Case("Trottoir"), new Case("Route"), new Case("Route"), new Case("Trottoir")},
-                {new Case("FastFood"), new Case("Trottoir"), new Case("Route"), new Case("Route"), new Case("Trottoir")},
-                {new Case("Maison"), new Case("Trottoir"), new Case("Route"), new Case("Route"), new Case("Trottoir")},
-        };
+        Random rand = new Random();
+        Random rand2 = new Random();
+        List<String> givenList = new ArrayList<>(Arrays.asList("Bar" , "Bibliotheque", "FastFood","Maison","Route","Trottoir","Universite"));
+        plateau = new Case[10][10];
+        for (int x = 0 ; x <plateau.length; x++){
+            for (int y = 0; y < plateau.length; y++){
+                int randomIndex = rand.nextInt(givenList.size());
+                plateau[x][y] = new Case(givenList.get(randomIndex));
+                System.out.println(givenList);
+                if(givenList.get(randomIndex).equals("Bar") || givenList.get(randomIndex).equals("Bibliotheque") || givenList.get(randomIndex).equals("FastFood") ||
+                        givenList.get(randomIndex).equals("Maison") || givenList.get(randomIndex).equals("Universite")){
+                    givenList.remove(randomIndex);
+                }
+                if(plateau[x][y] == null){
+                    randomIndex = rand.nextInt(givenList.size());
+                    plateau[x][y] = new Case(givenList.get(randomIndex));
+                }
+            }
+        }
         for (int i = 0; i < plateau.length; i++) {
             for (int j = 0; j < plateau.length; j++) {
                 switch (plateau[i][j].getTypeCase()) {
@@ -59,18 +71,39 @@ public class Plateau extends Case {
         System.out.println(personnage.getPersoX() + " " + personnage.getPersoY());
     }
 
+    public void affiche(){
+        for (int i = 0; i < plateau.length; i++){
+            for (int j = 0; j < plateau.length; j++) {
+                System.out.print(plateau[i][j].getTypeCase() + "    \t");
+            }
+            System.out.println();
+        }
+    }
 
-    public void deplacement(Personnage personnage){
+
+    public void deplacement(Personnage personnage, MoyenTransport moyenTransport){
         String pos = "Debut";
         while(!pos.equals("Arret")){ // AJOUTER MOYEN TRANSPORT
             System.out.println("Utiliser Z Q S D pour vous deplacer dans la ville");
             Scanner user = new Scanner(System.in);
             pos = user.nextLine();
             switch (pos) {
-                case "Z" -> personnage.setPersoX(personnage.getPersoX() + 1);
-                case "S" -> personnage.setPersoX(personnage.getPersoX() - 1);
-                case "Q" -> personnage.setPersoY(personnage.getPersoY() - 1);
-                case "D" -> personnage.setPersoY(personnage.getPersoY() + 1);
+                case "Z" -> {
+                    personnage.setPersoX(personnage.getPersoX() + 1);
+                    moyenTransport.deplacer(personnage);
+                }
+                case "S" -> {
+                    personnage.setPersoX(personnage.getPersoX() - 1);
+                    moyenTransport.deplacer(personnage);
+                }
+                case "Q" -> {
+                    personnage.setPersoY(personnage.getPersoY() - 1);
+                    moyenTransport.deplacer(personnage);
+                }
+                case "D" -> {
+                    personnage.setPersoY(personnage.getPersoY() + 1);
+                    moyenTransport.deplacer(personnage);
+                }
             }
             if(personnage.getPersoX() == barX && personnage.getPersoY() == barY){
                 plateau[barX][barY].batiment.ressourcer(personnage);

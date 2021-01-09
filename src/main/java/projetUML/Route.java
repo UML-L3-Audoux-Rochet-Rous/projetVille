@@ -2,7 +2,7 @@ package projetUML;
 
 import java.util.Random;
 
-public class Route {
+public class Route extends Batiment{
 
     public Route(){
     }

@@ -1,8 +1,7 @@
 package projetUML;
 
 import javax.swing.*;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -12,11 +11,11 @@ public class Main {
         String str = utilisateur.nextLine();
         Personnage personnage = new Personnage(str);
         personnage.affiche();
-        System.out.println("Taper Plateau pour commencer");
+        Plateau jeu = new Plateau(personnage);
+        //jeu.affiche();
+        System.out.println("Entrez votre moyen de transport");
         str = utilisateur.nextLine();
-        if (str.equals("Plateau")){
-            Plateau jeu = new Plateau(personnage);
-            jeu.deplacement(personnage);
-        }
+        MoyenTransport moyenTransport = new MoyenTransport(str);
+        jeu.deplacement(personnage,moyenTransport);
     }
 }

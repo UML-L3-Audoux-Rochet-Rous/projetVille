@@ -19,33 +19,31 @@ public class Personnage {
 
     public Personnage(String type){
         this.type = type;
-        if(type.equals("Standard")){
-            this.vie = 75;
-            this.hydratation = 75;
-            this.satiete = 75;
-            this.moral = 75;
-            this.permis = true;
-            this.nbArrestation = 0;
-        }
-
-        else if (type.equals("Hippie")){
-            this.vie = 75;
-            this.hydratation = 50;
-            this.satiete = 50;
-            this.moral = 100;
-            this.permis = false;
-        }
-
-        else if (type.equals("Presse")){
-            this.vie = 100;
-            this.hydratation = 75;
-            this.satiete = 75;
-            this.moral = 50;
-            this.permis = true;
-            this.nbArrestation = 0;
-        }
-        else{
-            System.out.println("Non valide");
+        switch (type) {
+            case "Standard" -> {
+                this.vie = 75;
+                this.hydratation = 75;
+                this.satiete = 75;
+                this.moral = 75;
+                this.permis = true;
+                this.nbArrestation = 0;
+            }
+            case "Hippie" -> {
+                this.vie = 75;
+                this.hydratation = 50;
+                this.satiete = 50;
+                this.moral = 100;
+                this.permis = false;
+            }
+            case "Presse" -> {
+                this.vie = 100;
+                this.hydratation = 75;
+                this.satiete = 75;
+                this.moral = 50;
+                this.permis = true;
+                this.nbArrestation = 0;
+            }
+            default -> System.out.println("Non valide");
         }
     }
 

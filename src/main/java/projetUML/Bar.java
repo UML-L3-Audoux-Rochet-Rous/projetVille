@@ -4,7 +4,9 @@ import java.util.Random;
 
 public class Bar extends Batiment{
 
-    public Bar() {
+
+    public Bar(){
+
     }
 
     public String getNom(){
@@ -23,4 +25,5 @@ public class Bar extends Batiment{
 
 
     }
+
 }
