@@ -1,12 +1,13 @@
 package projetUML;
 
+import java.awt.*;
 import java.util.Random;
 
 public class Bar extends Batiment{
 
 
-    public Bar(){
 
+    public Bar(){
     }
 
     public String getNom(){
@@ -22,8 +23,6 @@ public class Bar extends Batiment{
         personnage.setHydratation(personnage.getHydratation()+25);
         personnage.setMoral(personnage.getMoral()+10);
         personnage.setVie(personnage.getVie()-3);
-
-
     }
 
 }

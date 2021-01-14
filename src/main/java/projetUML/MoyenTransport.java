@@ -11,6 +11,10 @@ public class MoyenTransport {
         return moyenTransport;
     }
 
+    public void setMoyenTransport(String moyenTransport) {
+        this.moyenTransport = moyenTransport;
+    }
+
     public MoyenTransport(String moyenTransport){
         switch (moyenTransport) {
             case "Voiture" -> this.moyenTransport = "Voiture";
@@ -28,7 +32,7 @@ public class MoyenTransport {
             int chanceMourir = chance.nextInt(100);
             personnage.setMoral(personnage.getMoral()-2.0);
             if(chanceMourir <= 2){
-                System.out.println("Tu t'es mangé un poid lourd fdp apprend a conduire");
+                System.out.println("Accident de transport");
                 personnage.setVie(0);
                 personnage.gameOver();
             }
@@ -57,5 +61,4 @@ public class MoyenTransport {
             }
         }
     }
-
 }

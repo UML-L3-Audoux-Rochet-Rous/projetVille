@@ -145,8 +145,9 @@ public class Personnage {
     }
 
     public void affiche(){
-        System.out.println("vie = " + this.vie + " hydra = " + this.hydratation + " satiete = " + this.satiete + " Nombre diplome = " + this.nbDiplome + " Moral = " + this.moral
-        + " Chance diplome " + this.chanceDiplome);
+        System.out.println(" Vie : " + this.vie + "\t | \t Moral : " + this.moral + "\n Satiete : " + this.satiete + "\t | \t Hydratation : " + this.hydratation
+        + "\n Diplomes : " + this.nbDiplome + "\t | \t Intelligence : " + this.chanceDiplome + "\n Position perso : " + this.getPersoX() + " " + this.getPersoY());
+
     }
 
     public void gameOver(){

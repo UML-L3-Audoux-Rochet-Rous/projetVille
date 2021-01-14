@@ -2,7 +2,10 @@ package projetUML;
 
 public class PiegeRoute extends Piege{
 
-    @Override
+    public PiegeRoute(String typePiege){
+        this.typePiege = typePiege;
+    }
+
     public void modifPiege(Personnage personnage) {
         if (typePiege.equals("Feu Rouge")){
             personnage.setVie(personnage.getVie()-1);
